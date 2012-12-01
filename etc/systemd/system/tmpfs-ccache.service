@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync local folder and tmpfs dir to speedup ccache
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/tmpfs-ccache
+ExecStart=/usr/local/bin/tmpfs-ccache-service.sh start $TMPFS $PERSISTENT $SIZE
+ExecStop=/usr/local/bin/tmpfs-ccache-service.sh stop $TMPFS $PERSISTENT $SIZE
+RemainAfterExit=yes

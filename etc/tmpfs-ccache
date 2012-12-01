@@ -1,0 +1,8 @@
+# tmpfs
+TMPFS="/tmp/tmpfs-ccache"
+
+# persistent data
+PERSISTENT="/var/cache/tmpfs-ccache"
+
+# ccache and tmpfs size in GB
+SIZE=4
