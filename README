@@ -5,6 +5,9 @@
 # systemd service. The service should be started before compiling and 
 # should be stopped before shutting down the computer.
 #
+# Important: Wait for the service to finish starting/stopping before going on.
+# The message: done. will be printed on /var/log/messages.
+#
 # Install instructions:
 # # cp etc/tmpfs-ccache /etc
 # # cp etc/systemd/system/tmpfs-ccache.service /etc/systemd/system
