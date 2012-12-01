@@ -4,5 +4,10 @@ TMPFS="/tmp/tmpfs-ccache"
 # persistent data
 PERSISTENT="/var/cache/tmpfs-ccache"
 
-# ccache and tmpfs size in GB
+# ccache and tmpfs size in GB. Number only!
 SIZE=4
+
+# -a for archive; -H for preserve hard links; -x for don't cross filesystem
+# boundaries
+RSYNC_OPTS="-a -H -x"
+

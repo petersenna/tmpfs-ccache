@@ -5,11 +5,8 @@ TMPFS=$2
 PERSISTENT=$3
 SIZE=$4
 
-# -a for archive
-RSYNC_OPTS="-a"
-
 if [ "$1" == "start" ];then
-	echo Start T=$TMPFS P=$PERSISTENT S=$SIZE
+	echo Starting... T=$TMPFS P=$PERSISTENT S=$SIZE
 
 	if [ ! -d $PERSISTENT ];then
 		echo $PERSISTENT do not exist. Creating...
@@ -37,12 +34,15 @@ if [ "$1" == "start" ];then
 		echo Error on rsync $RSYNC_OPTS $PERSISTENT/ $TMPFS/
 		exit 1
 	fi
+
+	echo done.
 	exit 0
 fi
 
 if [ "$1" == "stop" ];then
-	echo Stop
+	echo Stopping...
 
+	# --delete is added only here
 	rsync $RSYNC_OPTS --delete $TMPFS/ $PERSISTENT/ &> /dev/null
 	if [ $? != 0 ];then
 		echo Error on rsync $RSYNC_OPTS --delete $TMPFS/ $PERSISTENT/
@@ -61,6 +61,7 @@ if [ "$1" == "stop" ];then
 		exit 1
 	fi
 
+	echo done.
 	exit 0
 fi
 
