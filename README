@@ -2,7 +2,8 @@
 # Peter Senna Tschudin
 #
 # This is for putting ccache files on tmpfs in a boot persistent way using 
-# systemd services.
+# systemd services. The service should be started before compiling and 
+# should be stopped before shutting down the computer.
 #
 # After copying files, edit:
 # /etc/tmpfs-ccache
@@ -16,5 +17,6 @@
 # As regular user, before starting compilation:
 # $ /usr/local/bin/tmpfs-ccache-user.sh
 #
-# The service should be started before compiling and should be stopped before 
-# shutting down the computer.
+# Note that this may not be good idea due memory consumption, but for
+# automatic start / stop the service on boot:
+# # systemctl enable tmpfs-ccache.service
