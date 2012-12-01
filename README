@@ -1,9 +1,15 @@
 # Licensed under GPLv2
-# Peter Senna Tschudin
+# Peter Senna Tschudin Dec 1, 2012
 #
-# This is for putting ccache files on tmpfs in a boot persistent way using 
-# systemd services. The service should be started before compiling and 
+# This is for storing ccache files on tmpfs in a boot persistent way using 
+# systemd service. The service should be started before compiling and 
 # should be stopped before shutting down the computer.
+#
+# Install instructions:
+# # cp etc/tmpfs-ccache /etc
+# # cp etc/systemd/system/tmpfs-ccache.service /etc/systemd/system
+# # cp usr/local/bin/tmpfs-ccache-user.sh /usr/local/bin
+# # cp usr/local/bin/tmpfs-ccache-service.sh /usr/local/bin
 #
 # After copying files, edit:
 # /etc/tmpfs-ccache
