@@ -5,13 +5,16 @@ TMPFS=$2
 PERSISTENT=$3
 SIZE=$4
 
+# Permission for directories
+PERM=777
+
 if [ "$1" == "start" ];then
 	echo Starting... T=$TMPFS P=$PERSISTENT S=$SIZE
 
 	if [ ! -d $PERSISTENT ];then
 		echo $PERSISTENT do not exist. Creating...
 		mkdir -p $PERSISTENT
-		chmod 777 $PERSISTENT
+		chmod $PERM $PERSISTENT
 	fi
 
 	umount $TMPFS &> /dev/null
@@ -22,6 +25,8 @@ if [ "$1" == "start" ];then
 		echo Error creating $TMPFS
 		exit 1
 	fi
+
+	chmod $PERM $TMPFS
 
 	mount -t tmpfs -o size="$SIZE"G tmpfs $TMPFS
 	if [ $? != 0 ];then
