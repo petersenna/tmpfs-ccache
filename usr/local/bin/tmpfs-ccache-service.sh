@@ -28,7 +28,7 @@ if [ "$1" == "start" ];then
 
 	chmod $PERM $TMPFS
 
-	mount -t tmpfs -o size="$SIZE"G tmpfs $TMPFS
+	mount -t tmpfs -o size="$SIZE"G,noatime,mode=$PERM tmpfs $TMPFS
 	if [ $? != 0 ];then
 		echo Error mounting $TMPFS
 		exit 1
