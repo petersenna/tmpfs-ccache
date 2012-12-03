@@ -23,8 +23,11 @@
 # Stop the service with:
 # # systemctl stop tmpfs-ccache.service
 #
-# As regular user, before starting compilation:
-# $ /usr/local/bin/tmpfs-ccache-user.sh
+# As regular user, run before starting compilation:
+# ( The . before the script path is important. Allows setting CCACHE_DIR
+# environment variable )
+#
+# $ . /usr/local/bin/tmpfs-ccache-user.sh
 #
 # Note that this may not be good idea due memory consumption, but for
 # automatic start / stop the service on boot:
